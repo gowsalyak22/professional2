@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "author": "Anonymous maker",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "wokwi-esp32-devkit-v1", "id": "esp", "top": 0, "left": 0, "attrs": {} },
+    { "type": "wokwi-hc-sr04", "id": "ultrasonic1", "top": 217.03, "left": 158.97, "attrs": {} },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 1.33,
+      "left": 236.87,
+      "attrs": { "color": "limegreen" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led2",
+      "top": 31.33,
+      "left": 288.87,
+      "attrs": { "color": "limegreen" }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led3",
+      "top": 87.33,
+      "left": 255.54,
+      "attrs": { "color": "limegreen" }
+    },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr1",
+      "top": -69.47,
+      "left": 20.53,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": -20.52,
+      "left": -164.88,
+      "attrs": { "volume": "0.1" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX0", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX0", "$serialMonitor:TX", "", [] ],
+    [ "esp:GND.1", "led3:C", "limegreen", [ "h0" ] ],
+    [ "esp:D15", "led3:A", "green", [ "h0" ] ],
+    [ "esp:D2", "led2:A", "green", [ "h0" ] ],
+    [ "esp:GND.1", "led2:C", "limegreen", [ "h202.53", "v-77.27" ] ],
+    [ "esp:GND.1", "led1:C", "limegreen", [ "h150.53", "v-102.6" ] ],
+    [ "esp:D4", "led1:A", "green", [ "h159.2", "v-76.93" ] ],
+    [
+      "esp:D27",
+      "ultrasonic1:ECHO",
+      "green",
+      [ "h-26.5", "v0.27", "h-17.33", "v134.67", "h286" ]
+    ],
+    [ "bz1:2", "esp:D19", "green", [ "v8.3", "h228.36" ] ],
+    [ "bz1:1", "esp:GND.2", "green", [ "v87.12", "h144.56" ] ],
+    [ "ldr1:VCC", "esp:VIN", "red", [ "h-187.84", "v208.06" ] ],
+    [ "ldr1:GND", "esp:GND.1", "black", [ "h-92.05", "v191.08" ] ],
+    [ "ldr1:AO", "esp:D34", "green", [ "h-0.26", "v73.8" ] ],
+    [ "esp:D12", "ultrasonic1:GND", "green", [ "h5.67", "v188.83" ] ],
+    [ "esp:3V3", "ultrasonic1:GND", "green", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
